@@ -1,6 +1,11 @@
 require("@google-cloud/debug-agent").start();
 const express = require("express");
 const app = express();
+const { Logging } = require("@google-cloud/logging");
+const logging = new Logging({ projectId: "vitalij-test" });
+
+// Selects the log to write to
+const log = logging.log(logName);
 // Imports the Google Cloud client library
 const { ErrorReporting } = require("@google-cloud/error-reporting");
 
@@ -13,11 +18,10 @@ const errorEvent = errors.event();
 // Add error information
 errorEvent.setMessage("My error message");
 errorEvent.setUser("root@nexus");
-
-// Report the error event
-errors.report(errorEvent, () => {
-  console.log("Done reporting error event!");
-});
+logging.errors // Report the error event
+  .report(errorEvent, () => {
+    console.log("Done reporting error event!");
+  });
 
 // Report an Error object
 errors.report(new Error("My error message"), () => {
@@ -29,11 +33,25 @@ errors.report("My error message", () => {
   console.log("Done reporting error string!");
 });
 
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
   console.log("Hello world received a request.");
 
   const target = process.env.TARGET || "World";
-  logging.log("Test log entry");
+  // Selects the log to write to
+  const log = logging.log("hello-log");
+
+  // The data to write to the log
+  const text = "Hello, world!";
+
+  // The metadata associated with the entry
+  const metadata = {
+    resource: { type: "global" },
+  };
+
+  // Prepares a log entry
+  const entry = log.entry(metadata, text);
+  await log.write(entry);
+  console.log(`Logged: ${text}`);
   res.send(`Hello ${target}!`);
 });
 
