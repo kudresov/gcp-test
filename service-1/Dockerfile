@@ -5,6 +5,8 @@ FROM node:12-slim
 # Create and change to the app directory.
 WORKDIR /usr/src/app
 
+ENV NODE_ENV production
+
 # Copy application dependency manifests to the container image.
 # A wildcard is used to ensure both package.json AND package-lock.json are copied.
 # Copying this separately prevents re-running npm install on every code change.
