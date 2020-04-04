@@ -9,6 +9,7 @@ require("@google-cloud/debug-agent").start({
     console.log("resolved>>>", resolved);
     return undefined;
   },
+  debug: true,
   logLevel: 4,
 });
 const express = require("express");
