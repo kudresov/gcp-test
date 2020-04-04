@@ -1,8 +1,8 @@
 require("@google-cloud/debug-agent").start({
-  javascriptFileExtensions: ["ts"],
+  javascriptFileExtensions: [".ts"],
   debug: true,
   logLevel: 4,
-  appPathRelativeToRepository: "/service-1",
+  appPathRelativeToRepository: "sservice-1",
 });
 const express = require("express");
 const app = express();
