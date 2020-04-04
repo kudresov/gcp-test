@@ -1,5 +1,5 @@
 require("@google-cloud/debug-agent").start({
-  workingDirectory: "dist",
+  workingDirectory: process.cwd() + "/dist",
   appPathRelativeToRepository: "service-1",
   logLevel: 4,
 });
