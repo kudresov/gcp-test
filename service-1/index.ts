@@ -1,4 +1,6 @@
-require("@google-cloud/debug-agent").start();
+require("@google-cloud/debug-agent").start({
+  appPathRelativeToRepository: "/service-1",
+});
 const express = require("express");
 const app = express();
 const { Logging } = require("@google-cloud/logging");
