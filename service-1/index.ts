@@ -1,14 +1,5 @@
 require("@google-cloud/debug-agent").start({
-  pathResolver: (
-    scriptPath: string,
-    knownFiles: string[],
-    resolved: string[]
-  ) => {
-    console.log("scriptPath>>>", scriptPath);
-    console.log("knownFiles>>>", knownFiles);
-    console.log("resolved>>>", resolved);
-    return undefined;
-  },
+  javascriptFileExtensions: ["ts"],
   debug: true,
   logLevel: 4,
 });
