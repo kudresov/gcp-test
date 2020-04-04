@@ -1,25 +1,25 @@
 require("@google-cloud/debug-agent").start({
-  appPathRelativeToRepository: "service-1",
+  appPathRelativeToRepository: "/service-1",
   logLevel: 4,
 });
 const express = require("express");
 const app = express();
-const { Logging } = require("@google-cloud/logging");
-const logging = new Logging({ projectId: "vitalij-test" });
+// const { Logging } = require("@google-cloud/logging");
+// const logging = new Logging({ projectId: "vitalij-test" });
 
 // Selects the log to write to
 // Imports the Google Cloud client library
-const { ErrorReporting } = require("@google-cloud/error-reporting");
+// const { ErrorReporting } = require("@google-cloud/error-reporting");
 
 // Instantiates a client
-const errors = new ErrorReporting();
+// const errors = new ErrorReporting();
 
 app.get("/", async (req, res) => {
   console.log("Hello world received a request.");
 
   const target = process.env.TARGET || "World";
   // Selects the log to write to
-  const log = logging.log("hello-log");
+  // const log = logging.log("hello-log");
 
   // The data to write to the log
   const text = "Hello, world!";
@@ -30,10 +30,10 @@ app.get("/", async (req, res) => {
   };
 
   // Prepares a log entry
-  const entry = log.entry(metadata, text);
+  // const entry = log.entry(metadata, text);
   // Reports a simple error
-  errors.report("Something broke!");
-  await log.write(entry);
+  // errors.report("Something broke!");
+  // await log.write(entry);
   console.log(`Logged: ${text}`);
   res.send(`Hello ${target}!`);
 });
