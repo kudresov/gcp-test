@@ -17,7 +17,7 @@ require("@google-cloud/debug-agent").start({
   keyFilename: "/Users/vitalijkudresov/Desktop/vitalij-test-5d5897313ddc.json",
   debug: true,
   logLevel: 4,
-  javascriptFileExtensions: ["ts"],
+  javascriptFileExtensions: [".ts"],
 });
 const express = require("express");
 const app = express();
