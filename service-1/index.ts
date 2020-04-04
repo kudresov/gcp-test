@@ -9,8 +9,15 @@ require("@google-cloud/debug-agent").start({
     console.log("resolved>>>", resolved);
     return undefined;
   },
+  description: "local-test",
+  serviceContext: {
+    service: "hello-world-local",
+  },
+  projectId: "vitalij-test",
+  keyFilename: "/Users/vitalijkudresov/Desktop/vitalij-test-5d5897313ddc.json",
   debug: true,
   logLevel: 4,
+  javascriptFileExtensions: ["ts"],
 });
 const express = require("express");
 const app = express();
