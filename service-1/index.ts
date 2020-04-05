@@ -1,14 +1,8 @@
 require("@google-cloud/debug-agent").start({
   debug: true,
   logLevel: 4,
-  pathResolver: (
-    scriptPath: string,
-    knownFiles: string[],
-    resolved: string[]
-  ) => {
-    return knownFiles.filter((f) => f.endsWith(scriptPath));
-  },
-  appPathRelativeToRepository: "service-1/dist",
+  workingDirectory: "/src",
+  appPathRelativeToRepository: "service-1",
 });
 const express = require("express");
 const app = express();
