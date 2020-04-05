@@ -8,6 +8,7 @@ require("@google-cloud/debug-agent").start({
   ) => {
     return knownFiles.filter((f) => f.endsWith(scriptPath));
   },
+  appPathRelativeToRepository: "service-1/dist",
 });
 const express = require("express");
 const app = express();
