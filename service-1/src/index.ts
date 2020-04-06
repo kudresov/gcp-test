@@ -10,12 +10,12 @@ require("@google-cloud/debug-agent").start({
     const result = knownFiles.filter((f) => f.endsWith(scriptPath));
     return result;
   },
+  appPathRelativeToRepository: "service-1",
   description: "local-test",
   serviceContext: {
     service: "hello-world-local",
   },
   projectId: "vitalij-test",
-  appPathRelativeToRepository: "service-1/dist",
   keyFilename: "/Users/vitalijkudresov/Desktop/vitalij-test-5d5897313ddc.json",
   debug: true,
   logLevel: 4,
